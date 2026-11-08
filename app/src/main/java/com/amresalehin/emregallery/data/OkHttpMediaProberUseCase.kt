@@ -17,21 +17,26 @@ import android.graphics.BitmapFactory
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
-import java.io.InputStream
 import java.util.Locale
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.TimeUnit
+import com.amresalehin.emregallery.data.OkHttpDownloader.DirectMediaProbeResult
+import com.amresalehin.emregallery.data.OkHttpDownloader.HttpResponse
 
 internal suspend fun OkHttpDownloader.probeDirectMediaImpl(
     url: String,
-    referer: String? = null
+    referer: String? = null,
+    userAgent: String = DEFAULT_USER_AGENT,
+    extraHeaders: Map<String, String>? = null
 ): DirectMediaProbeResult = withContext(Dispatchers.IO) {
     try {
         val headReq = Request.Builder()
             .url(url)
             .head()
+            .header("User-Agent", userAgent)
             .apply {
                 if (!referer.isNullOrBlank()) header("Referer", referer)
+                extraHeaders?.forEach { (k, v) -> header(k, v) }
             }
             .build()
 
@@ -149,12 +154,17 @@ internal fun OkHttpDownloader.parseRetryAfterHeaderImpl(header: String?): Long? 
 internal suspend fun OkHttpDownloader.getHtmlImpl(
     url: String,
     referer: String? = null,
+    userAgent: String = DEFAULT_USER_AGENT,
+    extraHeaders: Map<String, String>? = null,
     maxBytes: Long = 2 * 1024 * 1024
 ): HttpResponse = withContext(Dispatchers.IO) {
-    val reqBuilder = Request.Builder().url(url)
+    val reqBuilder = Request.Builder()
+        .url(url)
+        .header("User-Agent", userAgent)
     if (!referer.isNullOrBlank()) {
         reqBuilder.header("Referer", referer)
     }
+    extraHeaders?.forEach { (k, v) -> reqBuilder.header(k, v) }
 
     try {
         client.newCall(reqBuilder.build()).execute().use { response ->
@@ -235,7 +245,3 @@ internal fun OkHttpDownloader.getTargetStorageDirImpl(context: Context): File {
         fallbackFolder
     }
 }
-
-/**
- * Downloads an image, video, audio file, or stream to storage with resumable Range support.
- */

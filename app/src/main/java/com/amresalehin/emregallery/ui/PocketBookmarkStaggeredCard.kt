@@ -277,16 +277,3 @@ fun PocketBookmarkStaggeredCard(
         }
     }
 }
-/**
- * Bookmark Viewer / Detail Page conforming strictly to image_a086dfff.png
- * Features:
- * - Top Bar: Circular Back button on left, 3 circular buttons on right (Reader/Browser, Copy, Delete)
- * - Center visual: Layered card stack deck with image/cover and `[🖼️ X / Y]` pagination badge
- * - Bottom sheet: Drag handle + rounded capsule cards for:
- *   1. 📅 Time
- *   2. 🔗 Source (clickable with open icon)
- *   3. 📄 Note (clickable to edit)
- *   4. 🏷️ Tags (chips of domain/type)
- *   5. ≡ Title
- *   6. ≡ Description
- */

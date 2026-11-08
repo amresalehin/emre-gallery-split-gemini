@@ -4,7 +4,8 @@ import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
 import android.graphics.RectF
 import java.util.UUID
-
+import com.amresalehin.emregallery.face.EnteFaceClusteringStrategy.FaceObservation
+import com.amresalehin.emregallery.face.EnteFaceClusteringStrategy.WorkingCluster
 
 internal data class EnteInitialClusteringData(
     val observations: List<EnteFaceClusteringStrategy.FaceObservation>,
@@ -54,10 +55,17 @@ internal fun EnteFaceClusteringStrategy.loadInitialClusteringData(
         }
 
         if (observations.isEmpty()) {
-            store.pruneEmptyAutoPeople(db, engineId)
-            db.setTransactionSuccessful()
-            onProgress(0, 0)
-            return 0
+            return EnteInitialClusteringData(
+                observations = emptyList(),
+                exclusions = emptyMap(),
+                userNamedPeople = emptyMap(),
+                hiddenPeople = emptySet(),
+                userCoverMedia = emptyMap(),
+                lockedPeople = emptySet(),
+                lockedObs = emptyList(),
+                fluidObs = emptyList(),
+                workingClusters = mutableListOf()
+            )
         }
 
         // 2. Load manual feedback exclusions: (source_id -> excluded target person IDs)

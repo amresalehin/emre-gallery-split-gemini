@@ -32,22 +32,23 @@ class SearchEngine(internal val context: Context) {
 
     suspend fun getLiveSuggestions(
         query: String,
-        allMedia: List<MediaItem>,
-        customAlbums: List<CustomAlbum>,
-        customTagsMap: Map<String, Set<String>>,
-        customPeopleMap: Map<String, Set<String>>
-    ): List<SearchSuggestion> = getLiveSuggestionsImpl(query, allMedia, customAlbums, customTagsMap, customPeopleMap)
+        media: List<MediaItem>,
+        recentSearches: List<String> = emptyList(),
+        customAlbums: List<CustomAlbum> = emptyList(),
+        customTagsMap: Map<String, Set<String>> = emptyMap(),
+        customPeopleMap: Map<String, Set<String>> = emptyMap()
+    ): List<SearchSuggestion> = getLiveSuggestionsImpl(query, media, recentSearches, customAlbums, customTagsMap, customPeopleMap)
 
     suspend fun searchMedia(
         query: String,
-        filterState: SearchFilterState,
+        media: List<MediaItem>,
+        filter: SearchFilterState,
         sortMode: SearchSortMode,
-        allMedia: List<MediaItem>,
-        customAlbums: List<CustomAlbum>,
-        customTagsMap: Map<String, Set<String>>,
-        customPeopleMap: Map<String, Set<String>>,
-        favourites: Set<String>
-    ): SearchResultData = searchMediaImpl(query, filterState, sortMode, allMedia, customAlbums, customTagsMap, customPeopleMap, favourites)
+        customAlbums: List<CustomAlbum> = emptyList(),
+        customTagsMap: Map<String, Set<String>> = emptyMap(),
+        customPeopleMap: Map<String, Set<String>> = emptyMap(),
+        favourites: Set<String> = emptySet()
+    ): SearchResultData = searchMediaImpl(query, media, filter, sortMode, customAlbums, customTagsMap, customPeopleMap, favourites)
 
     companion object {
         const val MAX_SUGGESTIONS_PER_CATEGORY = 6

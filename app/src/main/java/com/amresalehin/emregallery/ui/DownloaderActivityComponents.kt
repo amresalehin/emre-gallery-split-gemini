@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.sp
 import com.amresalehin.emregallery.data.DownloadActivityItem
 import com.amresalehin.emregallery.data.DownloadActivityManager
 import kotlinx.coroutines.delay
+@Composable
 fun DownloaderActivityPage(
     onBack: () -> Unit,
     onAddNewDownload: () -> Unit,

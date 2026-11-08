@@ -15,8 +15,6 @@ import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import java.net.URL
 
-/**
-
 internal fun ExtractionCoordinator.extractImpl(targetUrl: String, scope: CoroutineScope, directOnly: Boolean = false) {
     cancel()
 
@@ -32,7 +30,7 @@ internal fun ExtractionCoordinator.extractImpl(targetUrl: String, scope: Corouti
 
     val requestContext = MediaRequestContext.create(trimmed)
     val domain = requestContext.domain
-    val expectation = determineExpectation(requestContext.url)
+    val expectation = ExtractionCoordinator.determineExpectation(requestContext.url)
 
     _state.value = ExtractionState(
         isRunning = true,

@@ -21,6 +21,7 @@ import com.amresalehin.emregallery.data.*
 import java.util.*
 
 
+@Composable
 fun SearchResultsHeader(
     queryTitle: String,
     totalCount: Int,
@@ -204,10 +205,3 @@ fun SearchResultsHeader(
         }
     }
 }
-
-/**
- * Compact Live Suggestion Row (State B):
- * Height ~56-72 dp.
- * Shows thumbnail / entity icon, primary label, secondary context, and trailing northwest arrow affordance.
- */
-@Composable

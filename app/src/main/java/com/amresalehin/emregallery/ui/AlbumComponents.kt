@@ -125,6 +125,7 @@ fun CreateAlbumDialog(
 
 @OptIn(ExperimentalMaterial3Api::class)
 
+@Composable
 fun CollectionPill(
     title: String,
     count: String,

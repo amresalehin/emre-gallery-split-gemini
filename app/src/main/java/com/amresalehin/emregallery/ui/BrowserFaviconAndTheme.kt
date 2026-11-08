@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.sp
 import java.util.*
 
 
+@Composable
 fun DuckDuckGoLogo(modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
@@ -213,5 +214,3 @@ object BrowserThemeColors {
 // =========================================================================
 // 1. TOP BAR (Minimalist Monochrome Floating Pill with Discover Badge & Controls)
 // =========================================================================
-
-@Composable

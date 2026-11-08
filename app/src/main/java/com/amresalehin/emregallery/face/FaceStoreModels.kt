@@ -166,13 +166,3 @@ data class EngineComparisonResult(
     val facesB: List<EngineComparisonFace>,
     val matchingFaceCount: Int
 )
-
-/**
- * Modern, multi-engine face clustering and identity management store.
- *
- * Engines (production and experimental) operate with complete isolation:
- * - Engine-specific embeddings and model versions.
- * - Engine-partitioned face indexing status (indexing under one engine never causes another engine to skip a photo).
- * - Isolated clustering and people identities preventing experimental engines from corrupting production identities.
- * - Direct cross-engine comparison mechanism on shared photograph sets.
- */

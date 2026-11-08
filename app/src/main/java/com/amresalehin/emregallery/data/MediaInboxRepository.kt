@@ -33,10 +33,10 @@ data class MediaInboxStack(
 )
 
 class MediaInboxRepository(private val context: Context) {
-    private val prefs: SharedPreferences =
+    internal val prefs: SharedPreferences =
         context.getSharedPreferences("media_inbox_prefs", Context.MODE_PRIVATE)
 
-    private val _stacks = MutableStateFlow<List<MediaInboxStack>>(emptyList())
+    internal val _stacks = MutableStateFlow<List<MediaInboxStack>>(emptyList())
     val stacks: StateFlow<List<MediaInboxStack>> = _stacks.asStateFlow()
 
     init {
@@ -161,7 +161,7 @@ class MediaInboxRepository(private val context: Context) {
     }
 
     companion object {
-        private const val KEY_STACKS_JSON = "inbox_stacks_json"
+        internal const val KEY_STACKS_JSON = "inbox_stacks_json"
 
         @Volatile
         private var INSTANCE: MediaInboxRepository? = null

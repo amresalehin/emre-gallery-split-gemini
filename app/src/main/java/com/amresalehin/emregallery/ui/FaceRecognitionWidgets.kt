@@ -258,7 +258,7 @@ internal fun FaceRecognitionHeaderRow(
                     scanPercent = scanPercent,
                     processedCount = currentFindingState.processed,
                     showActionMenu = showActionMenu,
-                    onShowActionMenuChange = { showActionMenu = it },
+                    onShowActionMenuChange = onShowActionMenuChange,
                     onCancelDownload = onCancelDownload,
                     onDownloadModel = onDownloadModel,
                     onToggleFaceFinding = onToggleFaceFinding,

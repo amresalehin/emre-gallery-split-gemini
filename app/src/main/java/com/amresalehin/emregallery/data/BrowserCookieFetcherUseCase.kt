@@ -27,11 +27,12 @@ import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import java.net.URL
 import java.util.Locale
 import java.util.concurrent.ConcurrentHashMap
-
+import com.amresalehin.emregallery.data.BrowserSession.BackgroundCookieResult
 
 internal suspend fun BrowserSession.fetchCookiesInBackgroundImpl(
     context: Context,
     targetUrl: String,
+    timeoutMs: Long = 8_000L,
     onStatusUpdate: (String) -> Unit = {}
 ): BackgroundCookieResult = suspendCancellableCoroutine { continuation ->
     mainHandler.post {

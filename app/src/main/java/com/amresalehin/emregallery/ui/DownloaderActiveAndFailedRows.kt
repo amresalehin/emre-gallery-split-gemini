@@ -168,7 +168,3 @@ internal fun ActiveDownloadRow(
         }
     }
 }
-
-/**
- * Row displaying a failed item matching image_ae11436d.png with Retry and Delete buttons
- */

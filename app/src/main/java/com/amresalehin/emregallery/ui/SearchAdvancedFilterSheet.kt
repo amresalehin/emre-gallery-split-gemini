@@ -22,6 +22,7 @@ import com.amresalehin.emregallery.data.*
 import java.util.*
 
 
+@Composable
 fun SearchAdvancedFilterSheet(
     filterState: SearchFilterState,
     onApplyFilter: (SearchFilterState) -> Unit,

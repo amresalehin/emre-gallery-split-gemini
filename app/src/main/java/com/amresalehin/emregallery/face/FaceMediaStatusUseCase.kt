@@ -12,6 +12,7 @@ import java.util.UUID
 import kotlin.math.sqrt
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import com.amresalehin.emregallery.face.FaceClusterStore.MediaIndexedInfo
 
 
 internal fun FaceClusterStore.getFaceBoundsImpl(mediaUri: String, faceIndex: Int, engineId: String = BuffaloLFaceEngine.ENGINE_ID): RectF? {

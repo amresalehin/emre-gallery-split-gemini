@@ -27,8 +27,6 @@ import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.sqrt
 
-/**
-
 internal object BuffaloLModelInstaller {
         fun isModelInstalled(context: Context): Boolean {
             val dir = File(context.filesDir, "face-models/buffalo_l")

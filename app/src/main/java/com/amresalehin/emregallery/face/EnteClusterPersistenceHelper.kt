@@ -104,8 +104,7 @@ internal fun EnteFaceClusteringStrategy.reconcileAndPersistWorkingClusters(
 
         db.setTransactionSuccessful()
         return workingClusters.size
-    } finally {
-}
+    }
 
 internal fun EnteFaceClusteringStrategy.computeMeanNormalized(embeddings: List<FloatArray>, dim: Int): FloatArray {
     val sum = FloatArray(dim)

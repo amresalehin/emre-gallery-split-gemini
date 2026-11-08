@@ -5,6 +5,7 @@ import java.net.URL
 import java.net.URLEncoder
 import java.util.Locale
 import kotlin.math.abs
+import com.amresalehin.emregallery.data.MediaClassifier.ResolvedMediaInfo
 
 internal fun MediaClassifier.resolveOriginalMediaImpl(rawUrl: String): ResolvedMediaInfo {
     val trimmed = rawUrl.trim()
@@ -231,6 +232,3 @@ internal fun MediaClassifier.resolveOriginalMediaImpl(rawUrl: String): ResolvedM
         cleanTitle = null
     )
 }
-
-/**
- * Creates a canonical deduplication key by removing non-functional tracking query parameters.

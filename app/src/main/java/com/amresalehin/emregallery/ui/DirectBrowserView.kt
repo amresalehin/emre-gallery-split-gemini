@@ -186,17 +186,12 @@ fun DirectBrowserView(
                 addressInput = addressInput,
                 onAddressInputChange = { addressInput = it },
                 currentUrl = currentUrl,
+                pageTitle = pageTitle,
                 isLoading = isLoading,
                 loadingProgress = loadingProgress,
                 canGoBack = canGoBack,
                 canGoForward = canGoForward,
-                detectedItemsCount = detectedMediaCount,
-                recentSearchQueries = recentSearchQueries,
-                allHistorySites = allHistorySites,
-                activeSearchEngine = activeSearchEngine,
-                onSearchEngineChange = { activeSearchEngine = it },
-                isSearchFocused = isSearchFocused,
-                onSearchFocusChange = { isSearchFocused = it },
+                detectedItemsCount = totalDetectedCount,
                 isDark = isDark,
                 webViewInstance = webViewInstance,
                 historyManager = historyManager,
@@ -211,8 +206,12 @@ fun DirectBrowserView(
                         navigateToUrl(target)
                     }
                 },
-                onBackToSearchClick = onBackToSearchClick,
-                onSwitchToMediaTab = onSwitchToMediaTab
+                onMenuClick = onMenuClick,
+                onOpenDiscoveredMedia = onOpenDiscoveredMedia,
+                onSwitchToMediaTab = onSwitchToMediaTab,
+                onClose = onClose,
+                onShowTabsSheet = { showTabsSheet = true },
+                onShowSettingsSheet = { showSettingsSheet = true }
             )
 
             Box(

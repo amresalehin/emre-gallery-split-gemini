@@ -133,22 +133,29 @@ object DownloadActivityManager {
 
     fun recordQueued(
         id: String,
-        workId: String? = null,
         title: String,
         mediaUrl: String,
         thumbnailUrl: String? = null,
         isVideo: Boolean = false,
         isAudio: Boolean = false,
         isStream: Boolean = false,
-        format: String = "MP4",
-        durationHint: String? = null,
+        format: String = "JPG",
+        workId: String? = null,
+        isRetry: Boolean = false,
         stackId: String? = null,
         stackTitle: String? = null,
         sourceDomain: String? = null,
         sourceUrl: String? = null
-    ) = recordQueuedImpl(id, workId, title, mediaUrl, thumbnailUrl, isVideo, isAudio, isStream, format, durationHint, stackId, stackTitle, sourceDomain, sourceUrl)
+    ) = recordQueuedImpl(id, title, mediaUrl, thumbnailUrl, isVideo, isAudio, isStream, format, workId, isRetry, stackId, stackTitle, sourceDomain, sourceUrl)
 
-    fun recordBatchQueued(items: List<DownloadActivityItem>) = recordBatchQueuedImpl(items)
+    fun recordBatchQueued(
+        items: List<ScrapedMediaItem>,
+        workIds: List<UUID>? = null,
+        stackId: String? = null,
+        stackTitle: String? = null,
+        sourceDomain: String? = null,
+        sourceUrl: String? = null
+    ) = recordBatchQueuedImpl(items, workIds, stackId, stackTitle, sourceDomain, sourceUrl)
 
     fun updateProgress(itemId: String, progress: Float, bytesRead: Long, totalBytes: Long, speedBytesPerSec: Long = 0L) =
         updateProgressImpl(itemId, progress, bytesRead, totalBytes, speedBytesPerSec)

@@ -35,6 +35,7 @@ import coil.compose.AsyncImage
 import com.amresalehin.emregallery.data.MediaItem
 
 
+@Composable
 fun EndOfStoryOverlay(
     storyItems: List<MediaItem> = emptyList(),
     storyTitle: String = "",
@@ -241,8 +242,3 @@ fun EndOfStoryOverlay(
         }
     }
 }
-
-/**
- * Bottom action bar with Lock, Archive, Move (for move to folder), Delete/Restore buttons.
- */
-@Composable

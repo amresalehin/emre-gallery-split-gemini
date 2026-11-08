@@ -25,6 +25,7 @@ import com.amresalehin.emregallery.data.*
 import java.util.*
 
 
+@Composable
 internal fun SquareGrid(
     media: List<MediaItem>,
     columnsCount: Int,
@@ -229,7 +230,3 @@ internal fun CompactMediaListRow(
         }
     }
 }
-
-/**
- * Custom Date Range Picker Dialog.
- */

@@ -263,8 +263,3 @@ fun ActivityPreviewCard(
         }
     }
 }
-
-/**
- * Thumbnail item for the Activity Preview Card
- */
-@Composable

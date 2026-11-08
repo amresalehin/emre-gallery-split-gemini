@@ -191,7 +191,3 @@ internal suspend fun SearchEngine.getLiveSuggestionsImpl(
 
     suggestions
 }
-
-/**
- * Executes real multi-criteria search filtering and ranking for State C.
- */

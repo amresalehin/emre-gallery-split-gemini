@@ -21,6 +21,7 @@ import java.io.InputStream
 import java.util.Locale
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.TimeUnit
+import com.amresalehin.emregallery.data.OkHttpDownloader.DownloadResult
 
 internal suspend fun OkHttpDownloader.downloadMediaFileDetailedImpl(
     context: Context,

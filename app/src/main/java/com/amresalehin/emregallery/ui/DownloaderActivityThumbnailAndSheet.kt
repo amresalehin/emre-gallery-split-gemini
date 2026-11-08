@@ -24,6 +24,7 @@ import coil.request.ImageRequest
 import com.amresalehin.emregallery.data.DownloadActivityItem
 
 
+@Composable
 internal fun ActivityThumbnailBox(
     item: DownloadActivityItem,
     modifier: Modifier = Modifier
@@ -170,19 +171,3 @@ internal fun ActivityThumbnailBox(
         }
     }
 }
-
-/**
- * Activity Page matching image_ae11436d.png with various controls:
- * - Top bar with Back arrow and Tune/controls button
- * - Filter pills: All, Downloading (X), Failed (Y), Finished (Z)
- * - Section for active downloads (progress bar, speed, pause/resume)
- * - Section for failed downloads (error reason, retry, delete)
- * - Section for past downloads (finished items with green checkmark, size, timestamp)
- * - Floating action button '+' on bottom right
- * - Modal bottom sheet with global controls (retry all, cancel all, clear history)
- */
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-
-
-

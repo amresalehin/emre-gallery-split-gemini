@@ -55,7 +55,7 @@ internal fun FaceClusterStore.addRawFaceObservationImpl(
             ).use { cursor ->
                 while (cursor.moveToNext()) {
                     val prevBounds = RectF(cursor.getFloat(2), cursor.getFloat(3), cursor.getFloat(4), cursor.getFloat(5))
-                    if (calculateIoU(bounds, prevBounds) >= 0.40f) {
+                    if (calculateIoUImpl(bounds, prevBounds) >= 0.40f) {
                         existingClusterId = cursor.getString(0)
                         existingPersonId = cursor.getString(1)
                         break
@@ -92,7 +92,7 @@ internal fun FaceClusterStore.addRawFaceObservationImpl(
             aspectRatio = if (bounds != null && bounds.height() > 0) bounds.width() / bounds.height() else 0.85f,
             overallQuality = quality
         )
-        saveFaceMetrics(db, mediaUri, faceIndex, provenance.engineId, metrics)
+        saveFaceMetricsImpl(db, mediaUri, faceIndex, provenance.engineId, metrics)
         val groupingPending = ContentValues().apply {
             put("engine_id", provenance.engineId)
             put("model_version", provenance.modelVersion)
@@ -222,7 +222,3 @@ internal fun FaceClusterStore.pruneEmptyAutoPeopleImpl(db: SQLiteDatabase, engin
            AND NOT EXISTS (SELECT 1 FROM face_feedback fb WHERE fb.engine_id=people.engine_id
                AND (fb.source_id=people.id OR fb.target_id=people.id))""".trimIndent(),
         arrayOf(engineId))
-
-/**
- * Keep a single representative face for each person. Explicit cover selection sets
- * cover_face_id directly; otherwise choose the highest-quality observation deterministically.

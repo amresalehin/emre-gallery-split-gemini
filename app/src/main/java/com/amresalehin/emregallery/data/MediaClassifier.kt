@@ -61,9 +61,12 @@ object MediaClassifier {
 
     data class DataUriInfo(
         val mimeType: String,
-        val isBase64: Boolean,
-        val payload: String,
-        val estimatedBytes: Long
+        val format: String = mimeType.substringAfterLast('/', "png"),
+        val estimatedSizeBytes: Long = 0L,
+        val cleanTitle: String = "",
+        val isBase64: Boolean = true,
+        val payload: String = "",
+        val estimatedBytes: Long = estimatedSizeBytes
     )
 
     internal val HTTP_URL_REGEX = "(https?://[^\\s<>\"'\\[\\]{}|\\\\^`]+)".toRegex(RegexOption.IGNORE_CASE)
@@ -115,6 +118,7 @@ object MediaClassifier {
      * Resolves a media URL to its original full-resolution master file URL across major CDNs
      * (Wikimedia, Reddit, Imgur, Twitter/X, WordPress/Jetpack, Base64 Data URIs)
      * while preserving the sharp thumbnail URL for immediate preview.
+     */
 
     fun isSubstantialDataUri(url: String): Boolean = isSubstantialDataUriImpl(url)
     fun parseDataUriInfo(dataUri: String): DataUriInfo? = parseDataUriInfoImpl(dataUri)
@@ -133,8 +137,8 @@ object MediaClassifier {
     fun parsePixelArea(item: ScrapedMediaItem): Long? = parsePixelAreaImpl(item)
     fun parsePixelArea(resolutionHint: String?, url: String?): Long? = parsePixelAreaImpl(resolutionHint, url)
     fun compareMediaQuality(a: ScrapedMediaItem, b: ScrapedMediaItem): Int = compareMediaQualityImpl(a, b)
-    fun mergeMediaItems(existing: ScrapedMediaItem, incoming: ScrapedMediaItem): ScrapedMediaItem =
-        mergeMediaItemsImpl(existing, incoming)
+    fun mergeMediaItems(targetMap: MutableMap<String, ScrapedMediaItem>, incoming: List<ScrapedMediaItem>): Boolean =
+        mergeMediaItemsImpl(targetMap, incoming)
     fun deduplicateScrapedItems(items: List<ScrapedMediaItem>): List<ScrapedMediaItem> =
         deduplicateScrapedItemsImpl(items)
     fun extractYouTubeVideoId(url: String?): String? = extractYouTubeVideoIdImpl(url)

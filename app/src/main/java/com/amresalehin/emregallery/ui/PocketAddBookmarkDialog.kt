@@ -212,7 +212,3 @@ fun AddBookmarkDialog(
         }
     }
 }
-
-/**
- * Edit Bookmark Dialog
- */

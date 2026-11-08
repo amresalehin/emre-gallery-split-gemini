@@ -2,6 +2,7 @@ package com.amresalehin.emregallery.ui
 
 import androidx.compose.animation.*
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -147,4 +148,87 @@ internal fun FailedDownloadRow(
  * Row displaying a finished past download item matching image_ae11436d.png with green checkmark
  */
 @Composable
+internal fun FinishedDownloadRow(
+    item: DownloadActivityItem,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(12.dp))
+            .clickable(onClick = onClick)
+            .padding(vertical = 4.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(14.dp)
+    ) {
+        Box(
+            modifier = Modifier
+                .size(width = 96.dp, height = 62.dp)
+                .clip(RoundedCornerShape(12.dp))
+                .background(MaterialTheme.colorScheme.surfaceContainerHighest)
+        ) {
+            AsyncImage(
+                model = item.thumbnailUrl ?: item.filePath ?: item.mediaUrl,
+                contentDescription = item.title,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
 
+            val formatBadge = getDisplayFormatBadge(item)
+            if (formatBadge.isNotBlank()) {
+                Surface(
+                    shape = RoundedCornerShape(4.dp),
+                    color = Color.Black.copy(alpha = 0.8f),
+                    modifier = Modifier
+                        .padding(4.dp)
+                        .align(Alignment.TopStart)
+                ) {
+                    Text(
+                        text = formatBadge,
+                        style = MaterialTheme.typography.labelSmall,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 8.5.sp,
+                        color = Color.White,
+                        modifier = Modifier.padding(horizontal = 4.dp, vertical = 1.dp)
+                    )
+                }
+            }
+        }
+
+        Column(
+            modifier = Modifier.weight(1f),
+            verticalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
+            Text(
+                text = item.title,
+                style = MaterialTheme.typography.bodyMedium,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
+
+            val sizeStr = if (item.totalBytes > 0) {
+                val mb = item.totalBytes / (1024f * 1024f)
+                String.format(java.util.Locale.US, "%.1f MB", mb)
+            } else ""
+
+            Text(
+                text = if (sizeStr.isNotBlank()) "Complete • $sizeStr" else "Complete",
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                fontSize = 11.5.sp,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
+        }
+
+        Icon(
+            imageVector = Icons.Default.CheckCircle,
+            contentDescription = "Completed",
+            tint = Color(0xFF4CAF50),
+            modifier = Modifier.size(24.dp)
+        )
+    }
+}

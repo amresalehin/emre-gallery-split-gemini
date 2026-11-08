@@ -21,6 +21,7 @@ import java.io.InputStream
 import java.util.Locale
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.TimeUnit
+import com.amresalehin.emregallery.data.OkHttpDownloader.DownloadResult
 
 internal fun OkHttpDownloader.processActiveDownloadResponse(
     activeResponse: okhttp3.Response,
@@ -32,9 +33,10 @@ internal fun OkHttpDownloader.processActiveDownloadResponse(
     finalFile: File,
     existingBytes: Long,
     onProgress: ((bytesRead: Long, totalBytes: Long) -> Unit)?
-): OkHttpDownloader.DownloadResult {
-        activeResponse.use { resp ->
-            val code = resp.code
+): DownloadResult {
+    var currentExistingBytes = existingBytes
+    activeResponse.use { resp ->
+        val code = resp.code
             val isPartial = code == 206
             val isSuccess = code in 200..299
 
@@ -105,13 +107,13 @@ internal fun OkHttpDownloader.processActiveDownloadResponse(
             }
 
             val contentRange = resp.header("Content-Range")
-            val append = if (isPartial && existingBytes > 0L) {
+            val append = if (isPartial && currentExistingBytes > 0L) {
                 true
             } else {
                 // Server returned HTTP 200 (ignored Range request) or restarted cleanly:
-                if (existingBytes > 0L) {
+                if (currentExistingBytes > 0L) {
                     tempFile.delete()
-                    existingBytes = 0L
+                    currentExistingBytes = 0L
                 }
                 false
             }
@@ -131,7 +133,7 @@ internal fun OkHttpDownloader.processActiveDownloadResponse(
                 if (rangeTotal != null && rangeTotal > 0L) {
                     rangeTotal
                 } else if (contentLength > 0L) {
-                    existingBytes + contentLength
+                    currentExistingBytes + contentLength
                 } else {
                     -1L
                 }
@@ -139,7 +141,7 @@ internal fun OkHttpDownloader.processActiveDownloadResponse(
                 if (contentLength > 0L) contentLength else -1L
             }
 
-            var downloaded = if (append) existingBytes else 0L
+            var downloaded = if (append) currentExistingBytes else 0L
 
             body.byteStream().use { input: InputStream ->
                 FileOutputStream(tempFile, append).use { output ->

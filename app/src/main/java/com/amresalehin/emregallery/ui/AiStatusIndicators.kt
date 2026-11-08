@@ -19,6 +19,7 @@ import com.amresalehin.emregallery.data.CloudAiProvider
 import com.amresalehin.emregallery.data.CloudProviderStatus
 
 
+@Composable
 internal fun DynamicCloudStatusIndicator(
     activeProvider: CloudAiProvider?,
     isTesting: Boolean,
@@ -136,8 +137,3 @@ internal fun DynamicCloudStatusIndicator(
         }
     }
 }
-
-/**
- * Dynamic Status Button for Florence-2 Local Model matching Welcome Screen capsule buttons
- * and app monochrome theme tokens.
- */

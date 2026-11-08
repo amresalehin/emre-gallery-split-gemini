@@ -35,6 +35,7 @@ import coil.compose.AsyncImage
 import com.amresalehin.emregallery.data.MediaItem
 
 
+@Composable
 fun ViewerBottomActionBar(
     isBin: Boolean,
     isHidden: Boolean = false,

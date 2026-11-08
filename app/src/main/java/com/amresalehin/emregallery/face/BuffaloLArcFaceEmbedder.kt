@@ -27,8 +27,6 @@ import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.sqrt
 
-/**
-
 /** ArcFace W600K_R50: 112px input, BGR channel order with (pixel - 127.5) / 127.5 normalization. */
 internal fun BuffaloLFaceEngine.inferEmbedding(face: Bitmap): FloatArray {
     val input = imageTensorData(face, BuffaloLFaceEngine.RECOGNITION_SIZE, 127.5f, 127.5f)

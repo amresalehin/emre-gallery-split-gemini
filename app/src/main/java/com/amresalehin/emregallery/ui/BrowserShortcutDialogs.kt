@@ -22,6 +22,7 @@ import com.amresalehin.emregallery.data.BrowserShortcut
 import java.util.*
 
 
+@Composable
 fun AddShortcutDialog(
     onDismiss: () -> Unit,
     onAdd: (title: String, url: String) -> Unit,
@@ -210,9 +211,3 @@ fun EditShortcutDialog(
         }
     }
 }
-
-/**
- * Bottom sheet displaying full browsing history with instant search and clear.
- */
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable

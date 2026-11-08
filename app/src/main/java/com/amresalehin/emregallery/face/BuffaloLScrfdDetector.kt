@@ -26,8 +26,12 @@ import kotlinx.coroutines.CancellationException
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.sqrt
-
-/**
+import com.amresalehin.emregallery.face.BuffaloLFaceEngine.FaceDetection
+import com.amresalehin.emregallery.face.BuffaloLFaceEngine.Companion.DETECT_SIZE
+import com.amresalehin.emregallery.face.BuffaloLFaceEngine.Companion.STRIDES
+import com.amresalehin.emregallery.face.BuffaloLFaceEngine.Companion.MAX_FACES
+import com.amresalehin.emregallery.face.BuffaloLFaceEngine.Companion.NMS_THRESHOLD
+import com.amresalehin.emregallery.face.BuffaloLFaceEngine.Companion.MIN_FACE_SIZE
 
 /** SCRFD-10GF: 640px input, BGR channel order with (pixel - 127.5) / 128 normalization. */
 internal fun BuffaloLFaceEngine.detectScrfdFaces(bitmap: Bitmap): List<FaceDetection> {

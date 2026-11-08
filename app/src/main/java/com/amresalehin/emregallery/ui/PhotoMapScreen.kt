@@ -21,6 +21,7 @@ import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 
 
+@Composable
 fun PhotoMapScreen(
     media: List<MediaItem>,
     focusItem: MediaItem? = null,

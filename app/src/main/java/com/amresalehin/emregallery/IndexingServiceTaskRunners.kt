@@ -37,7 +37,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-
+import com.amresalehin.emregallery.IndexingForegroundService.*
 
 internal suspend fun IndexingForegroundService.runOcr(
     languages: List<String>,
@@ -50,8 +50,8 @@ internal suspend fun IndexingForegroundService.runOcr(
     val isMlKit = engineId.equals("google_mlkit", ignoreCase = true) || engineId.equals("mlkit", ignoreCase = true)
     val model = com.amresalehin.emregallery.ocr.TesseractModel.fromId(modelId)
     val photos = loadPhotos()
-    if (rescanAll) withContext(Dispatchers.IO) { TesseractOcr.clearCachedResults(this) }
-    val pending = photos.filterNot { TesseractOcr.hasCachedResult(this, Uri.parse(it.uri)) }
+    if (rescanAll) withContext(Dispatchers.IO) { TesseractOcr.clearCachedResults(this@runOcr) }
+    val pending = photos.filterNot { TesseractOcr.hasCachedResult(this@runOcr, Uri.parse(it.uri)) }
     val initialPaused = prefs.getBoolean(KEY_PAUSED, false)
     pauseSignal.value = initialPaused
     updateState(task = TASK_OCR, running = true, paused = initialPaused, processed = photos.size - pending.size, total = photos.size, error = null)

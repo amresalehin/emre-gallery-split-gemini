@@ -165,7 +165,7 @@ fun GalleryApp() {
         }
     }
         UpdateAlbumAndVisibleMediaState()
-        val statusBarTop = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
+        statusBarTop = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
         val navBarBottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
         topContentPadding = statusBarTop + 68.dp
         bottomContentPadding = navBarBottom + 88.dp

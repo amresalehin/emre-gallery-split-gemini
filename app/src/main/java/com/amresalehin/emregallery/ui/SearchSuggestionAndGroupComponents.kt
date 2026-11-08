@@ -25,6 +25,7 @@ import com.amresalehin.emregallery.data.*
 import java.util.*
 
 
+@Composable
 fun SearchSuggestionRow(
     suggestion: SearchSuggestion,
     onClick: () -> Unit,

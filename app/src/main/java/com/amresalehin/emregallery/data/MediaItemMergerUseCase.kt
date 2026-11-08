@@ -163,6 +163,3 @@ internal fun MediaClassifier.extractYouTubeVideoIdImpl(url: String?): String? {
     val thumbRegex = Regex("""(?:ytimg\.com|youtube\.com)/(?:vi|vi_webp)/([a-zA-Z0-9_-]{11})""")
     return thumbRegex.find(url)?.groupValues?.get(1)
 }
-
-/**
- * Checks if a media item is an SVG vector asset based on format, MIME type, or URL extension.

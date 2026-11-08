@@ -7,6 +7,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import android.app.Activity
+import android.content.ClipData
+import android.content.Intent
+import android.net.Uri
 import com.amresalehin.emregallery.data.MediaItem
 import com.amresalehin.emregallery.data.StoryGroup
 

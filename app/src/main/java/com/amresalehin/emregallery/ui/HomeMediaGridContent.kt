@@ -56,7 +56,7 @@ import java.util.Locale
 internal fun HomeMediaGridContent(
     listState: LazyListState,
     sortedMedia: List<MediaItem>,
-    groupedRows: List<Pair<DayMediaGroup, List<List<MediaItem>>>>,
+    groupedRows: List<Pair<DayGroup, List<List<MediaItem>>>>,
     precomputedStories: List<StoryGroup>?,
     loading: Boolean,
     isRefreshing: Boolean,

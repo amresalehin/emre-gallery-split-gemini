@@ -223,8 +223,3 @@ internal suspend fun SearchEngine.getDiscoveryContentImpl(
         tags = tagItems
     )
 }
-
-/**
- * Computes live suggestions (State B) while actively typing.
- * Rule: at most 1–2 suggestions per category, and only categories that have real matches.
- */

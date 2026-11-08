@@ -9,7 +9,7 @@ import com.googlecode.tesseract.android.TessBaseAPI
 import java.io.File
 import java.io.InputStream
 
-
+/**
  * Fully on-device OCR using Tesseract (tesseract4android).
  * Traineddata models (tessdata_fast and tessdata_best) are bundled into APK assets
  * and extracted to model-specific internal storage directories, with on-demand download

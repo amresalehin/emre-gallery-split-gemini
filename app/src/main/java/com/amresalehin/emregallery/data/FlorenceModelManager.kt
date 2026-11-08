@@ -2,6 +2,7 @@ package com.amresalehin.emregallery.data
 
 import android.content.Context
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -210,13 +211,13 @@ object FlorenceModelManager {
     suspend fun downloadAndInstallModel(
         context: Context,
         modelId: String,
-        scope: CoroutineScope
-    ): Boolean = downloadAndInstallModelImpl(context, modelId, scope)
+        onProgress: ((progress: Float, downloaded: Long, total: Long) -> Unit)? = null
+    ): Boolean = downloadAndInstallModelImpl(context, modelId, onProgress)
 
     suspend fun downloadAndInstall(
         context: Context,
-        scope: CoroutineScope
-    ): Boolean = downloadAndInstallImpl(context, scope)
+        onProgress: ((progress: Float, downloaded: Long, total: Long) -> Unit)? = null
+    ): Boolean = downloadAndInstallImpl(context, onProgress)
 
     suspend fun uninstallModel(context: Context, modelId: String): Boolean =
         uninstallModelImpl(context, modelId)

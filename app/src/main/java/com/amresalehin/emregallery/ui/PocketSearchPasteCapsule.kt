@@ -224,7 +224,3 @@ fun PocketSearchPasteCapsule(
         }
     }
 }
-
-/**
- * Pocket Selection Mode Toolbar
- */

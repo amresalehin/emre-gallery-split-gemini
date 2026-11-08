@@ -190,7 +190,7 @@ internal fun FaceClusterStore.addFaceImpl(
             aspectRatio = if (bounds != null && bounds.height() > 0) bounds.width() / bounds.height() else 0.85f,
             overallQuality = quality
         )
-        saveFaceMetrics(db, mediaUri, faceIndex, provenance.engineId, metrics)
+        saveFaceMetricsImpl(db, mediaUri, faceIndex, provenance.engineId, metrics)
 
         updateCentroidIncremental(db, assignedClusterId, embedding, provenance.engineId, provenance.modelVersion)
         db.setTransactionSuccessful()
@@ -199,8 +199,3 @@ internal fun FaceClusterStore.addFaceImpl(
         db.endTransaction()
     }
 }
-
-/**
- * Stores a raw detected face observation without immediately assigning a final cluster.
- * Used by modern incremental clustering pipelines.
- */

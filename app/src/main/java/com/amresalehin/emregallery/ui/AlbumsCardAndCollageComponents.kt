@@ -27,6 +27,7 @@ import com.amresalehin.emregallery.data.CustomAlbum
 import com.amresalehin.emregallery.data.MediaItem
 
 
+@Composable
 internal fun AlbumCardItem(
     album: CustomAlbum,
     palette: CardPalette,
@@ -255,5 +256,3 @@ internal fun CollageCell(
         }
     }
 }
-
-@Composable

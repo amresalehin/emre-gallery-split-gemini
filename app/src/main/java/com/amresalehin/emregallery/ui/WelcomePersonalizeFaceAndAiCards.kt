@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 
+@Composable
 internal fun PersonalizeFaceRecognitionCard(
     isExpanded: Boolean,
     onToggleExpand: () -> Unit,
@@ -195,5 +196,3 @@ internal fun PersonalizeAiConfigCard() {
         }
     }
 }
-
-@Composable

@@ -153,18 +153,17 @@ object BrowserSession {
     )
 
     @SuppressLint("SetJavaScriptEnabled")
-
     suspend fun extractHeadless(
         context: Context,
         targetUrl: String,
-        timeoutMs: Long = 15_000L,
-        onStatus: (String) -> Unit = {},
-        onBatchDiscovered: (List<ScrapedMediaItem>, String?) -> Unit = { _, _ -> }
-    ): ScrapeResult = extractHeadlessImpl(context, targetUrl, timeoutMs, onStatus, onBatchDiscovered)
+        onStatusUpdate: (String) -> Unit = {},
+        onMediaDiscovered: (ScrapedMediaItem) -> Unit = {}
+    ): MediaExtractionResult = extractHeadlessImpl(context, targetUrl, onStatusUpdate, onMediaDiscovered)
 
     suspend fun fetchCookiesInBackground(
         context: Context,
         targetUrl: String,
-        timeoutMs: Long = 8_000L
-    ): BackgroundCookieResult = fetchCookiesInBackgroundImpl(context, targetUrl, timeoutMs)
+        timeoutMs: Long = 8_000L,
+        onStatusUpdate: (String) -> Unit = {}
+    ): BackgroundCookieResult = fetchCookiesInBackgroundImpl(context, targetUrl, timeoutMs, onStatusUpdate)
 }

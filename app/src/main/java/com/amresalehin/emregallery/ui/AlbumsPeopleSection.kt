@@ -113,7 +113,7 @@ internal fun androidx.compose.foundation.lazy.LazyListScope.albumsPeopleCardItem
                                     onClick = {
                                         onEngineMenuExpandedChange(false)
                                         if (!FaceProcessingCoordinator.isBusy(context)) {
-                                            selectedEngineId = com.amresalehin.emregallery.face.BuffaloLFaceEngine.ENGINE_ID
+                                            onSelectedEngineIdChange(com.amresalehin.emregallery.face.BuffaloLFaceEngine.ENGINE_ID)
                                             FaceRecognitionSettings.setActiveEngine(context, com.amresalehin.emregallery.face.BuffaloLFaceEngine.ENGINE_ID)
                                             com.amresalehin.emregallery.face.FaceEngineRegistry.setActiveEngine(com.amresalehin.emregallery.face.BuffaloLFaceEngine.ENGINE_ID)
                                             FaceStoreEvents.notifyAllUpdated()
@@ -129,7 +129,7 @@ internal fun androidx.compose.foundation.lazy.LazyListScope.albumsPeopleCardItem
                                     onClick = {
                                         onEngineMenuExpandedChange(false)
                                         if (!FaceProcessingCoordinator.isBusy(context)) {
-                                            selectedEngineId = com.amresalehin.emregallery.face.EnteFaceConstants.ENGINE_ID
+                                            onSelectedEngineIdChange(com.amresalehin.emregallery.face.EnteFaceConstants.ENGINE_ID)
                                             FaceRecognitionSettings.setActiveEngine(context, com.amresalehin.emregallery.face.EnteFaceConstants.ENGINE_ID)
                                             com.amresalehin.emregallery.face.FaceEngineRegistry.setActiveEngine(com.amresalehin.emregallery.face.EnteFaceConstants.ENGINE_ID)
                                             FaceStoreEvents.notifyAllUpdated()

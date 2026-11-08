@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.draw.alpha
 
 
+@Composable
 internal fun AlbumsEmptyState(
     onCreateClick: () -> Unit
 ) {

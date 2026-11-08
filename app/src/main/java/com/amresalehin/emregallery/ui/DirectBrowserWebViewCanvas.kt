@@ -16,6 +16,7 @@ import android.os.Build
 import com.amresalehin.emregallery.data.BotDetectionMitigator
 import com.amresalehin.emregallery.data.BrowserHistoryManager
 import com.amresalehin.emregallery.data.BrowserSession
+import com.amresalehin.emregallery.data.BrowserTabSession
 import com.amresalehin.emregallery.data.DownloaderSession
 import com.amresalehin.emregallery.data.ExtractionSource
 import com.amresalehin.emregallery.data.MediaCaptureEngine
@@ -241,7 +242,7 @@ internal fun DirectBrowserWebViewCanvas(
                         }
                     },
                     update = { wv ->
-                        webViewInstance = wv
+                        onWebViewCreated(wv)
                         wv.setBackgroundColor(if (isDark) android.graphics.Color.parseColor("#111111") else android.graphics.Color.WHITE)
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                             wv.settings.forceDark = if (isDark) WebSettings.FORCE_DARK_ON else WebSettings.FORCE_DARK_OFF

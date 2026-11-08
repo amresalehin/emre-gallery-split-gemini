@@ -187,5 +187,3 @@ internal fun FolderCardItem(
         }
     }
 }
-
-@Composable

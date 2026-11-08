@@ -184,6 +184,3 @@ fun BrowserBottomNavBar(
 // 3. BROWSER HOME CONTENT (Shortcuts with flexible pinning & Recent history)
 // If absent, keep completely blank.
 // =========================================================================
-
-@OptIn(ExperimentalFoundationApi::class)
-@Composable

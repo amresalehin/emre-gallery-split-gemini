@@ -34,10 +34,11 @@ class FaceClusterStore(context: Context) :
     data class MediaIndexedInfo(
         val mediaUri: String,
         val engineId: String,
-        val indexedAt: Long,
-        val detectedFaces: Int,
-        val status: String,
-        val errorMessage: String? = null
+        val status: String = "",
+        val faceCount: Int = 0,
+        val errorMessage: String? = null,
+        val indexedAt: Long = 0L,
+        val detectedFaces: Int = faceCount
     )
 
     @Synchronized fun getFaceBounds(mediaUri: String, faceIndex: Int, engineId: String = BuffaloLFaceEngine.ENGINE_ID): RectF? =
@@ -56,7 +57,7 @@ class FaceClusterStore(context: Context) :
         getFailedMediaImpl(engineId)
 
     @Synchronized fun getFailedMedia(mediaUris: Collection<String>, engineId: String = BuffaloLFaceEngine.ENGINE_ID): List<Pair<String, String?>> =
-        getFailedMediaImpl(mediaUris, engineId)
+        getFailedMediaImpl(mediaUris.toList(), engineId)
 
     @Synchronized fun markMediaFailed(uri: String, engineId: String = BuffaloLFaceEngine.ENGINE_ID, errorMessage: String? = null) =
         markMediaFailedImpl(uri, engineId, errorMessage)
@@ -113,9 +114,9 @@ class FaceClusterStore(context: Context) :
         bounds: RectF? = null,
         confidence: Float = 1.0f,
         quality: Float = 1.0f,
-        provenance: EmbeddingProvenance = EmbeddingProvenance.ENTE,
+        provenance: EmbeddingProvenance = EnteFaceConstants.PROVENANCE,
         qualityMetrics: FaceQualityMetrics? = null
-    ): String = addRawFaceObservationImpl(mediaUri, faceIndex, rawEmbedding, bounds, confidence, quality, provenance, qualityMetrics)
+    ) = addRawFaceObservationImpl(mediaUri, faceIndex, rawEmbedding, bounds, confidence, quality, provenance, qualityMetrics)
 
     @Synchronized fun saveFaceMetrics(mediaUri: String, faceIndex: Int, engineId: String, metrics: FaceQualityMetrics) =
         saveFaceMetricsImpl(mediaUri, faceIndex, engineId, metrics)

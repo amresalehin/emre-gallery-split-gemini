@@ -178,5 +178,3 @@ fun GoogleDriveLogo(modifier: Modifier = Modifier) {
         }
     }
 }
-
-@Composable

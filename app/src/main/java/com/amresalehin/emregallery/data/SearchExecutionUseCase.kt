@@ -17,6 +17,9 @@ import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
+private fun isGif(item: MediaItem): Boolean =
+    item.name.endsWith(".gif", ignoreCase = true) || item.mimeType?.equals("image/gif", ignoreCase = true) == true
+
 internal suspend fun SearchEngine.searchMediaImpl(
     query: String,
     media: List<MediaItem>,

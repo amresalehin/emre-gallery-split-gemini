@@ -226,8 +226,3 @@ fun calculateMapBounds(map: MapView, context: Context): BoundingBox? {
     val lonEast = southEast.longitude.coerceIn(-180.0, 180.0)
     return BoundingBox(latNorth, lonEast, latSouth, lonWest)
 }
-
-/**
- * Bottom card displaying photos within the visible viewport, grouped by day.
- */
-@Composable

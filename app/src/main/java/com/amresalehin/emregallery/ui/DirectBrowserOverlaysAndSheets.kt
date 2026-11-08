@@ -20,6 +20,7 @@ import com.amresalehin.emregallery.data.BotDetectionMitigator
 import com.amresalehin.emregallery.data.BrowserHistoryManager
 import com.amresalehin.emregallery.data.BrowserShortcut
 import com.amresalehin.emregallery.data.BrowserTabItem
+import com.amresalehin.emregallery.data.BrowserSite
 import kotlinx.coroutines.launch
 
 

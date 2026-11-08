@@ -35,9 +35,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-
+import com.amresalehin.emregallery.IndexingForegroundService.*
 
 internal suspend fun IndexingForegroundService.downloadModel(force: Boolean, engineId: String = BuffaloLFaceEngine.ENGINE_ID) {
     val factory = FaceEngineRegistry.getFactory(engineId) ?: BuffaloLFaceEngineFactory

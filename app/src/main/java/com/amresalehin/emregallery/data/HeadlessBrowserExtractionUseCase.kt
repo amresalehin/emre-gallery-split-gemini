@@ -27,7 +27,7 @@ import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import java.net.URL
 import java.util.Locale
 import java.util.concurrent.ConcurrentHashMap
-
+import com.amresalehin.emregallery.data.BrowserSession.EmreMediaBridge
 
 internal fun BrowserSession.findActivity(ctx: Context): Activity? {
     var current: Context? = ctx

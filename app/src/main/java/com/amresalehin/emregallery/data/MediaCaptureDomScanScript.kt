@@ -7,8 +7,6 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.net.URL
 
-
- */
 internal fun MediaCaptureEngine.getJsDomScanScriptImpl(): String {
     return """
         (function() {
@@ -189,7 +187,3 @@ internal fun MediaCaptureEngine.getJsDomScanScriptImpl(): String {
         })();
     """.trimIndent()
 }
-
-/**
- * Shared JavaScript MutationObserver injection for dynamic DOM additions.
- */

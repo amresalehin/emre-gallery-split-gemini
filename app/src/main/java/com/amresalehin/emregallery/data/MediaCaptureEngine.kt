@@ -26,6 +26,7 @@ object MediaCaptureEngine {
      * - Schema.org JSON-LD (ImageObject, VideoObject, contentUrl)
      * - Content container CSS background-image
      * - IFrames pointing directly to media
+     */
 
     fun getJsDomScanScript(): String = getJsDomScanScriptImpl()
     fun getMutationObserverScript(): String = getMutationObserverScriptImpl()

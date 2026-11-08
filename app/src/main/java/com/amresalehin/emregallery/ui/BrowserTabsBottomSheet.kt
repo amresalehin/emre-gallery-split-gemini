@@ -28,6 +28,7 @@ import com.amresalehin.emregallery.data.BrowserTabItem
 import java.util.*
 
 
+@Composable
 fun BrowserTabsBottomSheet(
     tabs: List<BrowserTabItem>,
     currentUrl: String,
@@ -171,9 +172,3 @@ fun BrowserTabsBottomSheet(
         }
     }
 }
-
-/**
- * Bottom sheet for browser settings: ad-blocker, desktop mode, search engine, clearing cache.
- */
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable

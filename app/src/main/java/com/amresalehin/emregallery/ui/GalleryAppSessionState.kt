@@ -6,8 +6,8 @@ import androidx.compose.animation.*
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.filled.*
-import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.amresalehin.emregallery.data.CustomAlbum
 import com.amresalehin.emregallery.data.LockedVaultManager
@@ -121,6 +121,7 @@ internal class GalleryAppSessionState(
     var activeCustomAlbum: CustomAlbum? = null
     var activeAlbumTitle: String? = null
     var visibleMedia: List<MediaItem> = emptyList()
+    var statusBarTop: Dp = 0.dp
     var topContentPadding: Dp = 0.dp
     var bottomContentPadding: Dp = 0.dp
 }

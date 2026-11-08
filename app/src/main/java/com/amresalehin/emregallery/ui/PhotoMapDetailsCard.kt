@@ -67,6 +67,7 @@ import com.amresalehin.emregallery.ui.DISMISS_WIDTH_FRACTION
 import com.amresalehin.emregallery.ui.DISMISS_HEIGHT_FRACTION
 import com.amresalehin.emregallery.ui.DISMISS_FLING_VELOCITY
 
+@Composable
 fun PhotoMapDetailsCard(
     viewportCount: Int,
     locatedTotal: Int,

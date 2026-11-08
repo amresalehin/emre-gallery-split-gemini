@@ -27,6 +27,7 @@ import com.amresalehin.emregallery.data.BrowserSite
 import java.util.*
 
 
+@Composable
 fun BrowserHistoryBottomSheet(
     history: List<BrowserSite>,
     onNavigate: (String) -> Unit,

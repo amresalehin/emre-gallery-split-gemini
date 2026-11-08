@@ -197,8 +197,3 @@ internal fun MinimalAiInputField(
         }
     }
 }
-
-/**
- * Dynamic Status-Indicator Button for Cloud State with sleek capsule styling.
- */
-@Composable

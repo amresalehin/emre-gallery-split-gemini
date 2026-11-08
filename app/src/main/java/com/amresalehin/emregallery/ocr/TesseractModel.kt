@@ -56,8 +56,6 @@ enum class TesseractModel(
     }
 }
 
-/**
-
 internal fun TesseractOcr.copyBundledTrainedData(
     context: Context,
     code: String,

@@ -21,7 +21,7 @@ import kotlin.math.abs
  * stream remuxing, video compression, thumbnail generation, and FFprobe media inspection.
  */
 object FfmpegKitEngine {
-    private const val TAG = "FfmpegKitEngine"
+    internal const val TAG = "FfmpegKitEngine"
 
     @Volatile
     private var isConfigured = false

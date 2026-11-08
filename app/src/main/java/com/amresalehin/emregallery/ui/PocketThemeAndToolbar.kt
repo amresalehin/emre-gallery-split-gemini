@@ -203,11 +203,3 @@ fun PocketEmptyState(
             .testTag("pocket_empty_state")
     )
 }
-
-/**
- * Add Bookmark Dialog
- */
-
-
-
-

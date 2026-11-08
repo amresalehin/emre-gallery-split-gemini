@@ -268,13 +268,13 @@ object GalleryDlEngine {
         extractMediaImpl(url, options)
 
     suspend fun downloadMedia(
+        context: Context,
         mediaUrl: String,
-        targetFile: File,
+        fileName: String,
         referer: String? = null,
-        userAgent: String? = null,
-        cookies: String? = null,
-        extraHeaders: Map<String, String>? = null
-    ): Boolean = downloadMediaImpl(mediaUrl, targetFile, referer, userAgent, cookies, extraHeaders)
+        headers: Map<String, String>? = null,
+        cookies: String? = null
+    ): File? = downloadMediaImpl(context, mediaUrl, fileName, referer, headers, cookies)
 
     fun defaultPopularSites(): List<GalleryDlSite> = defaultPopularSitesImpl()
 }

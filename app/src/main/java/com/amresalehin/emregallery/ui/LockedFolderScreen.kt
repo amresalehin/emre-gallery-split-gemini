@@ -280,5 +280,3 @@ fun LockedFolderScreen(
         )
     }
 }
-
-@OptIn(ExperimentalFoundationApi::class)

@@ -5,6 +5,7 @@ import java.net.URL
 import java.net.URLEncoder
 import java.util.Locale
 import kotlin.math.abs
+import com.amresalehin.emregallery.data.MediaClassifier.DataUriInfo
 
 internal fun MediaClassifier.isSubstantialDataUriImpl(url: String): Boolean {
     val trimmed = url.trim()
@@ -193,8 +194,3 @@ internal fun MediaClassifier.resolveUrlImpl(rawUrl: String, baseUrl: String): St
         }
     }
 }
-
-/**
- * Strictly validates whether an input string is a valid web URL (e.g. https://example.com, example.com/page).
- * Rejects arbitrary text, invalid hosts, spaces, local file/javascript URIs, or non-domain inputs.
- */

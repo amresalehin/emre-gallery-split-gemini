@@ -264,9 +264,3 @@ internal fun MediaClassifier.compareMediaQualityImpl(a: ScrapedMediaItem, b: Scr
 
     return 0
 }
-
-/**
- * Merges incoming media items into a target map keyed by deduplicationKey.
- * Unified pipeline for deduplication, video-poster folding, quality upgrades,
- * resolution hint selection, provenance merging, and header retention.
- * Returns true if any item was added, replaced, or upgraded.

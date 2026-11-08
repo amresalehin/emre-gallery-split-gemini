@@ -31,6 +31,7 @@ import com.amresalehin.emregallery.data.BrowserSite
 import java.util.*
 
 
+@Composable
 fun BrowserHomeContent(
     shortcuts: List<BrowserShortcut>,
     recentSites: List<BrowserSite>,
@@ -291,8 +292,3 @@ fun BrowserHomeContent(
 // =========================================================================
 // 4. DIALOGS & BOTTOM SHEETS
 // =========================================================================
-
-/**
- * Dialog for adding a new flexible pinned shortcut.
- */
-@Composable

@@ -132,8 +132,3 @@ internal fun MediaCaptureEngine.getAdaptiveScrollScriptImpl(): String {
         })();
     """.trimIndent()
 }
-
-/**
- * Builds and validates a ScrapedMediaItem with provenance, clean titles,
- * download headers (User-Agent, Referer, Cookie), and thumbnail classification.
- */

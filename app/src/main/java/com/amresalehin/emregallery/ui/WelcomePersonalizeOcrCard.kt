@@ -25,6 +25,7 @@ import com.amresalehin.emregallery.ocr.MlKitLanguage
 import com.amresalehin.emregallery.ocr.TesseractOcr
 
 
+@Composable
 internal fun PersonalizeOcrCard(
     isExpanded: Boolean,
     onToggleExpand: () -> Unit,
@@ -248,5 +249,3 @@ internal fun PersonalizeOcrCard(
         }
     }
 }
-
-@Composable

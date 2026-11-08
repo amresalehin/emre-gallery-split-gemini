@@ -286,11 +286,3 @@ internal fun SelectedPlaceBar(
         }
     }
 }
-
-/**
- * Container for the interactive map and its heatmap overlay.
- *
- * [onDismissSelected] is called after the user swipes the selected-place bar away.
- * The caller must clear its selection (set [selectedMedia] to null) so the pin is removed too.
- */
-@Composable

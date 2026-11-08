@@ -59,6 +59,7 @@ import java.util.Locale
 import kotlin.math.roundToInt
 
 
+@Composable
 fun MemoriesStrip(
     media: List<MediaItem> = emptyList(),
     dayGroups: List<DayGroup>? = null,
